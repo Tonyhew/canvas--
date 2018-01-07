@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="600"></canvas>
+		
+		<script type="text/javascript">
+			
+			 var can1 = document.getElementById("canvas");  
+            var ctx = can1.getContext("2d");  
+            var nums = [26,15,12,5,25,17];  
+            var colors = ["#983335","#77963f","#5d437c","#35859f","#d1702f","#365e96"];  
+            var start = 0;  
+            var end = 0;  
+            ctx.translate(400,350);  
+             
+            function pieChart(){  
+                for (var i = 0;i < nums.length; i ++){  
+                    ctx.beginPath();  
+                    ctx.moveTo(0,0);  
+                    end += nums[i]/50*Math.PI;
+                    ctx.arc(0,0,200,start,end);  
+                    ctx.fillStyle = colors[i];  
+                    ctx.fill();  
+                    ctx.closePath();  
+                    ctx.strokeStyle = "white";  
+                    ctx.stroke();  
+                    start += nums[i]/50*Math.PI;
+                }  
+            }  
+            
+            function pieNum(){  
+                for (var i = 0;i < nums.length; i ++){  
+                    start = nums[i]/50*Math.PI/2;  
+                    ctx.rotate(end+start);//旋转数值  
+                    ctx.font = "25px scans-serif";  
+                    ctx.fillStyle = "#fff";  
+                    ctx.fillText(nums[i]+"%",140,0);  
+                    end = nums[i]/50*Math.PI/2;  
+                }  
+            }  
+           
+            pieChart();  
+            pieNum();  
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
